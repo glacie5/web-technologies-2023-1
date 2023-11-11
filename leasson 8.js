@@ -1,12 +1,5 @@
-function pickproparray(array,prop){
-    let res = [];
-    for(let index =0; index<array.length; index++){
-        let element = array[index];
-        if(element.hasOwnProperty(prop)){
-            res.push(element[prop])
-        }
-    }
-    return res;
+function pickproparray(array, prop) {
+    return array.map(element => element[prop]).filter(value => value !== undefined);
 }
 
 const students = [
@@ -39,14 +32,10 @@ counter2();
 
 
 
-function spinwords(str){
-    const words = str.split(' ');
-    for(let index = 0; index<words.length; index++){
-        if(words[index].length>=5){
-            words[index] = words[index].split('').reverse().join('');
-        }
-    }
-    return words.join(' ');
+function spinwords(str) {
+    return str.split(' ')
+        .map(word => word.length >= 5 ? word.split('').reverse().join('') : word)
+        .join(' ');
 }
 
 const result1 = spinwords( "Привет от Legacy" )
